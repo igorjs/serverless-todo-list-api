@@ -1,0 +1,183 @@
+root: true
+
+env:
+  es6: true
+  node: true
+  mocha: true
+
+parserOptions:
+  ecmaVersion: 2020
+  ecmaFeatures:
+    generators: true
+    impliedStrict: false
+    legacyDecorators: true
+    experimentalDecorators: true
+    experimentalObjectRestSpread: true
+
+settings:
+  import/resolver:
+      webpack:
+        config: webpack.config.js
+
+parser: babel-eslint
+
+plugins:
+- fp
+- babel
+- node
+- import
+- promise
+- standard
+
+extends:
+- eslint:recommended
+- standard
+
+rules:
+  accessor-pairs: 'off'
+  capitalized-comments: 'off'
+  consistent-return: warn
+  linebreak-style: 'off'
+  no-bitwise: warn
+  no-useless-concat: warn
+  space-before-function-paren: 'off'
+  brace-style:
+  - error
+  - 1tbs
+  comma-dangle:
+  - error
+  - always-multiline
+  camelcase: error
+  callback-return: error
+  dot-location:
+  - error
+  - property
+  dot-notation: error
+  eol-last: error
+  eqeqeq:
+  - error
+  - allow-null
+  global-require: error
+  handle-callback-err: error
+  indent:
+  - warn
+  - 2
+  - SwitchCase: 1
+    ignoredNodes:
+    - TemplateLiteral
+  keyword-spacing:
+  - error
+  - after: true
+    before: true
+  key-spacing:
+  - warn
+  - singleLine:
+      beforeColon: false
+      afterColon: true
+    multiLine:
+      align: colon
+      mode: minimum
+  max-len:
+  - error
+  - code: 120
+    ignoreUrls: true
+    ignoreComments: true
+    ignoreTrailingComments: true
+  no-var: error
+  no-tabs: error
+  no-debugger: error
+  no-console:
+  - warn
+  - allow:
+    - info
+    - warn
+    - error
+  no-inner-declarations:
+  - error
+  - functions
+  no-restricted-syntax:
+  - error
+  - WithStatement
+  no-shadow:
+  - error
+  - hoist: never
+  no-extra-boolean-cast: 'off'
+  no-unused-expressions: warn
+  no-param-reassign: warn
+  no-unused-vars:
+  - warn
+  - args: none
+    ignoreRestSiblings: true
+  no-duplicate-imports: error
+  no-use-before-define:
+  - error
+  - functions: false
+    variables: false
+  no-multiple-empty-lines:
+  - error
+  - max: 1
+    maxEOF: 0
+    maxBOF: 0
+  no-multi-spaces:
+  - error
+  - exceptions:
+      Property: true
+      VariableDeclarator: true
+      ImportDeclaration: true
+  no-new-require: error
+  no-mixed-requires: error
+  no-octal: error
+  no-octal-escape: error
+  operator-linebreak:
+  - warn
+  - after
+  - overrides:
+      "?": before
+      ":": before
+  prefer-const: warn
+  quotes:
+  - error
+  - single
+  - avoidEscape: true
+    allowTemplateLiterals: true
+  semi:
+  - error
+  - never
+  semi-spacing:
+  - error
+  - before: false
+    after: true
+  space-before-blocks: error
+  strict:
+  - warn
+  - global
+  valid-typeof:
+  - error
+  - requireStringLiterals: true
+  max-lines:
+  - warn
+  - 200
+  max-lines-per-function:
+  - warn
+  - max: 100
+    skipComments: true
+    skipBlankLines: true
+  complexity:
+  - warn
+  - 20
+  max-nested-callbacks:
+  - error
+  - 3
+  max-depth:
+  - error
+  - 3
+
+  ## FUNCTIONAL PROGRAMMING RULES
+  fp/no-let: 'off'
+  fp/no-delete: error
+  fp/no-get-set: error
+  fp/no-arguments: error
+  fp/no-mutating-assign: error
+  fp/no-mutating-methods: warn
+  fp/no-valueof-field: error
+  fp/no-throw: 'off'

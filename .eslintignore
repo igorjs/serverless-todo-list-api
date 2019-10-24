@@ -1,0 +1,4 @@
+**/.vscode/**
+**/.webpack/**
+**/.serverless/**
+**/node_modules/**

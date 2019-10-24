@@ -1,2 +1,9 @@
-# serverless-todo-list-api
-A simple TODO list ​REST API ​using serverless infrastructure.
+# Serverless TODO List
+
+**AWS services**
+----
+  List of AWS services used by this service.
+
+* **API Gateway**
+* **DynamoDB**
+* **Lambda**

@@ -45,15 +45,6 @@ custom:
   #   stage: ${self:provider.stage}
 
 functions:
-  todosCreate:
-    name: ${self:service.name}-${self:provider.stage}-create
-    handler: functions/todos.create
-    events:
-      - http:
-          path: /v1/todos
-          method: post
-          cors: true
-
   todosList:
     name: ${self:service.name}-${self:provider.stage}-list
     handler: functions/todos.list
@@ -72,13 +63,22 @@ functions:
           method: get
           cors: true
 
-  todosDelete:
-    name: ${self:service.name}-${self:provider.stage}-delete
-    handler: functions/todos.delete
+  todosCreate:
+    name: ${self:service.name}-${self:provider.stage}-create
+    handler: functions/todos.create
     events:
       - http:
           path: /v1/todos
-          method: delete
+          method: post
+          cors: true
+
+  todosUpdate:
+    name: ${self:service.name}-${self:provider.stage}-update
+    handler: functions/todos.update
+    events:
+      - http:
+          path: /v1/todos/{id}
+          method: post
           cors: true
 
 # resources:

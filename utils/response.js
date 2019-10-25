@@ -3,14 +3,11 @@ const corsheaders = {
   'Access-Control-Allow-Credentials': true,
 }
 
-const buildResponse = (statusCode, successState, data, message) => {
-  const body = {
-    success: successState,
-    message: message,
-  }
+const buildResponse = (statusCode, success, data, status) => {
+  const body = { success, status }
 
   if (data) {
-    if (successState) {
+    if (status) {
       body.data = data
     } else {
       body.error = data
@@ -24,14 +21,16 @@ const buildResponse = (statusCode, successState, data, message) => {
   }
 }
 
-export const success = (data, message = 'OK') => buildResponse(200, true, data, message)
+export const success = (data, status = 'OK') => buildResponse(200, true, data, status)
 
-export const created = (data, message = 'Created') => buildResponse(201, true, data, message)
+export const created = (data, status = 'Created') => buildResponse(201, true, data, status)
 
-export const badRequest = (data, message = 'Bad Request') => buildResponse(400, false, data, message)
+export const badRequest = (data, status = 'Bad Request') => buildResponse(400, false, data, status)
 
-export const unauthorized = (data, message = 'Unauthorized') => buildResponse(401, false, data, message)
+export const unauthorized = (data, status = 'Unauthorized') => buildResponse(401, false, data, status)
 
-export const forbidden = (data, message = 'Forbidden') => buildResponse(403, false, data, message)
+export const forbidden = (data, status = 'Forbidden') => buildResponse(403, false, data, status)
 
-export const exception = (data, message = 'Internal Server Error') => buildResponse(500, false, data, message)
+export const notFound = (data, status = 'Not Found') => buildResponse(403, false, data, status)
+
+export const exception = (data, status = 'Internal Server Error') => buildResponse(500, false, data, status)

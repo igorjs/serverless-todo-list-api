@@ -1,4 +1,4 @@
-import { success, created, badRequest } from 'utils/response'
+import { success, created, notFound, badRequest } from 'utils/response'
 import { parse } from 'utils/request'
 
 import todoService from 'service/todoService'
@@ -7,13 +7,11 @@ import todoService from 'service/todoService'
  * GET all todo items
  * @param {*} event
  */
-export async function list (event) {
+export const list = async () => {
   try {
-    const { payload } = parse(event)
+    const todos = await todoService.list()
 
-    const todo = await todoService.create({ message: payload.message })
-
-    return success([todo, todo, todo])
+    return success(todos, `${todos.length} records found`)
   } catch (err) {
     return badRequest(err.message)
   }
@@ -24,13 +22,13 @@ export async function list (event) {
  *
  * @param {*} event
  */
-export async function view (event) {
+export const view = async (event) => {
   try {
-    const { payload } = parse(event)
+    const { params } = parse(event)
 
-    const todo = await todoService.create({ message: payload.message })
+    const todo = await todoService.get(params)
 
-    return success(todo)
+    return todo.id ? success(todo, 'Record found') : notFound(todo, 'Record not found')
   } catch (err) {
     return badRequest(err.message)
   }
@@ -41,29 +39,29 @@ export async function view (event) {
  *
  * @param {*} event
  */
-export async function create (event) {
+export const create = async (event) => {
   try {
     const { payload } = parse(event)
 
-    const todo = await todoService.create({ message: payload.message })
+    const todo = await todoService.create({ message: payload?.message, due: payload?.due })
 
-    return created(todo)
+    return created(todo, 'Record created')
   } catch (err) {
     return badRequest(err.message)
   }
 }
 
 /**
- * PATCH / POST an update to an existing todo item via ID
+ * POST an update to an existing todo item via ID
  * @param {*} event
  */
-export async function update (event) {
+export const update = async (event) => {
   try {
-    const { payload } = parse(event)
+    const { params, payload } = parse(event)
 
-    const todo = await todoService.create({ message: payload.message })
+    const todo = await todoService.update({ id: params?.id, message: payload?.message, due: payload?.due })
 
-    return success(todo)
+    return success(todo, 'Record updated')
   } catch (err) {
     return badRequest(err.message)
   }

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@types/uuid": "^3.4.5",
     "aws-sdk": "^2.535.0"
   },
   "devDependencies": {

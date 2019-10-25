@@ -1,0 +1,41 @@
+{
+  "editor.wordWrapColumn": 120,
+  "editor.rulers": [ 120 ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  },
+  "[javascript]": {
+    "editor.showUnused": true,
+    "editor.formatOnType": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+  },
+  "[javascriptreact]": {
+    "editor.showUnused": true,
+    "editor.formatOnType": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "javascript.format.enable": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.completeJSDocs": true,
+  "javascript.suggest.completeFunctionCalls": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "typescript.locale": "en",
+  "typescript.surveys.enabled": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.completeFunctionCalls": true,
+  "files.associations": {
+    "*.js": "javascript"
+  },
+}

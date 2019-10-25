@@ -1,6 +1,6 @@
 import Todo from 'model/todo'
 
-const create = async (message, due) => {
+const create = async ({ message, due }) => {
   return new Todo(message, due)
 }
 

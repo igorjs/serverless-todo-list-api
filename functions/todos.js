@@ -1,7 +1,7 @@
-// import { DynamoDB } from 'aws-sdk'
 import { success, created, badRequest } from 'utils/response'
+import { parse } from 'utils/request'
+
 import todoService from 'service/todoService'
-// const dynamoDb = new DynamoDB.DocumentClient()
 
 /**
  * GET all todo items
@@ -9,7 +9,9 @@ import todoService from 'service/todoService'
  */
 export async function list (event) {
   try {
-    const todo = await todoService.create('Clean the house')
+    const { payload } = parse(event)
+
+    const todo = await todoService.create({ message: payload.message })
 
     return success([todo, todo, todo])
   } catch (err) {
@@ -24,7 +26,9 @@ export async function list (event) {
  */
 export async function view (event) {
   try {
-    const todo = await todoService.create('Clean the house')
+    const { payload } = parse(event)
+
+    const todo = await todoService.create({ message: payload.message })
 
     return success(todo)
   } catch (err) {
@@ -39,7 +43,9 @@ export async function view (event) {
  */
 export async function create (event) {
   try {
-    const todo = await todoService.create('Clean the house')
+    const { payload } = parse(event)
+
+    const todo = await todoService.create({ message: payload.message })
 
     return created(todo)
   } catch (err) {
@@ -53,7 +59,9 @@ export async function create (event) {
  */
 export async function update (event) {
   try {
-    const todo = await todoService.create('Clean the house')
+    const { payload } = parse(event)
+
+    const todo = await todoService.create({ message: payload.message })
 
     return success(todo)
   } catch (err) {

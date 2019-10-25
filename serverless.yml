@@ -5,6 +5,7 @@ plugins:
   - serverless-offline
   - serverless-dotenv-plugin
   # - serverless-domain-manager
+  # - serverless-bundle
 
 package:
   individually: true
@@ -13,9 +14,7 @@ provider:
   name: aws
   runtime: nodejs10.x
   stage: ${env:AWS_ENV, 'nonprod'}
-  # stage: 'nonprod'
   region: ${env:AWS_DEFAULT_REGION, 'ap-southeast-2'}
-  # region: 'ap-southeast-2'
   timeout: 30
   memorySize: 128
   environment:
@@ -54,13 +53,6 @@ functions:
           path: /v1/todos
           method: post
           cors: true
-    # vpc:
-    #   securityGroupIds:
-    #     - ${env:SG_ID}
-    #   subnetIds:
-    #     - ${env:SUBNET_ID_A}
-    #     - ${env:SUBNET_ID_B}
-    #     - ${env:SUBNET_ID_C}
 
   todosList:
     name: ${self:service.name}-${self:provider.stage}-list
@@ -70,29 +62,15 @@ functions:
           path: /v1/todos
           method: get
           cors: true
-    # vpc:
-    #   securityGroupIds:
-    #     - ${env:SG_ID}
-    #   subnetIds:
-    #     - ${env:SUBNET_ID_A}
-    #     - ${env:SUBNET_ID_B}
-    #     - ${env:SUBNET_ID_C}
 
   todosView:
     name: ${self:service.name}-${self:provider.stage}-view
     handler: functions/todos.view
     events:
       - http:
-          path: /v1/todos/{id+}
+          path: /v1/todos/{id}
           method: get
           cors: true
-    # vpc:
-    #   securityGroupIds:
-    #     - ${env:SG_ID}
-    #   subnetIds:
-    #     - ${env:SUBNET_ID_A}
-    #     - ${env:SUBNET_ID_B}
-    #     - ${env:SUBNET_ID_C}
 
   todosDelete:
     name: ${self:service.name}-${self:provider.stage}-delete
@@ -102,13 +80,6 @@ functions:
           path: /v1/todos
           method: delete
           cors: true
-    # vpc:
-    #   securityGroupIds:
-    #     - ${env:SG_ID}
-    #   subnetIds:
-    #     - ${env:SUBNET_ID_A}
-    #     - ${env:SUBNET_ID_B}
-    #     - ${env:SUBNET_ID_C}
 
 # resources:
 #   Resources:

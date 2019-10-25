@@ -12,12 +12,12 @@ package:
 provider:
   name: aws
   runtime: nodejs10.x
-  # stage: ${env:AWS_ENV, 'nonprod'}
-  stage: 'nonprod'
-  # region: ${env:AWS_DEFAULT_REGION, 'ap-southeast-2'}
-  region: 'ap-southeast-2'
-  timeout: 30 # Timeout for this function call
-  memorySize: 128 # Max Memory for execution
+  stage: ${env:AWS_ENV, 'nonprod'}
+  # stage: 'nonprod'
+  region: ${env:AWS_DEFAULT_REGION, 'ap-southeast-2'}
+  # region: 'ap-southeast-2'
+  timeout: 30
+  memorySize: 128
   environment:
     # RDS_ENDPOINT: ${ssm:/${self:provider.stage}/rds/rds_endpoint~true}
     # RDS_USERNAME: ${ssm:/${self:provider.stage}/rds/rds_user~true}

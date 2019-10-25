@@ -1,48 +1,62 @@
-// import * as uuid from 'uuid'
 // import { DynamoDB } from 'aws-sdk'
-
+import { success, created, badRequest } from 'utils/response'
+import todoService from 'service/todoService'
 // const dynamoDb = new DynamoDB.DocumentClient()
 
-export async function create (event) {
-  const response = {
-    statusCode: 200,
-    body      : JSON.stringify({
-      message: `create`,
-    }),
-  }
-
-  return response
-}
-
+/**
+ * GET all todo items
+ * @param {*} event
+ */
 export async function list (event) {
-  const response = {
-    statusCode: 200,
-    body      : JSON.stringify({
-      message: `list`,
-    }),
-  }
+  try {
+    const todo = await todoService.create('Clean the house')
 
-  return response
+    return success([todo, todo, todo])
+  } catch (err) {
+    return badRequest(err.message)
+  }
 }
 
+/**
+ * GET a single todo item via ID
+ *
+ * @param {*} event
+ */
 export async function view (event) {
-  const response = {
-    statusCode: 200,
-    body      : JSON.stringify({
-      message: `view`,
-    }),
-  }
+  try {
+    const todo = await todoService.create('Clean the house')
 
-  return response
+    return success(todo)
+  } catch (err) {
+    return badRequest(err.message)
+  }
 }
 
-export async function remove (event) {
-  const response = {
-    statusCode: 200,
-    body      : JSON.stringify({
-      message: `remove`,
-    }),
-  }
+/**
+ * POST a new todo item
+ *
+ * @param {*} event
+ */
+export async function create (event) {
+  try {
+    const todo = await todoService.create('Clean the house')
 
-  return response
+    return created(todo)
+  } catch (err) {
+    return badRequest(err.message)
+  }
+}
+
+/**
+ * PATCH / POST an update to an existing todo item via ID
+ * @param {*} event
+ */
+export async function update (event) {
+  try {
+    const todo = await todoService.create('Clean the house')
+
+    return success(todo)
+  } catch (err) {
+    return badRequest(err.message)
+  }
 }

@@ -1,6 +1,6 @@
 import uuidv4 from 'uuid/v4'
 
-export class Todo {
+export default class Todo {
   constructor (message, due) {
     this.id = uuidv4()
     this.created = new Date()

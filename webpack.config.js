@@ -47,9 +47,6 @@ module.exports = (async () => {
           ],
         },
       ],
-      loaders: [
-        { exclude: ['node_modules'], loader: 'babel', test: /\.js?$/ },
-      ],
     },
 
     resolve: {

@@ -26,10 +26,13 @@ const update = async ({ id, message, due }) => {
   assert(!!id, 'An ID must be specified!')
   assert(!!message, 'A message must be specified!')
 
-  const oldTodo = db.todos.find(todo => todo.id === id) ?? {}
-  const todos = db.todos.filter(todo => todo.id !== id)
+  const todo = db.todos.find(t => t.id === id)
 
-  const newTodo = { ...oldTodo, due: due ?? oldTodo.due, message }
+  if (!todo) throw new Error('Record not found in the database')
+
+  const todos = db.todos.filter(t => todo.id !== id)
+
+  const newTodo = { ...todo, due: due ?? todo.due, message }
 
   todos.push(newTodo) // eslint-disable-line fp/no-mutating-methods
 

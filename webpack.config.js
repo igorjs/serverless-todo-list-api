@@ -18,15 +18,21 @@ module.exports = (async () => {
 
   return {
     entry: slswebpack.lib.entries,
+
     output: {
       libraryTarget: 'commonjs',
       filename: '[name].js',
       path: path.join(__dirname, '.webpack'),
     },
+
     mode: process.env.NODE_ENV || 'production',
+
     target: 'node',
+
     devtool: process.env.NODE_ENV === 'development' ? 'source-map' : false,
+
     plugins: loadedPlugins,
+
     module: {
       rules: [
         {
@@ -41,7 +47,11 @@ module.exports = (async () => {
           ],
         },
       ],
+      loaders: [
+        { exclude: ['node_modules'], loader: 'babel', test: /\.js?$/ },
+      ],
     },
+
     resolve: {
       modules: [path.resolve(__dirname, '.'), 'node_modules'],
       extensions: ['.js', '.jsm', '.json'],

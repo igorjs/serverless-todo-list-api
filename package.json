@@ -7,8 +7,9 @@
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "start": "node --inspect node_modules/serverless/bin/serverless offline",
-    "lint": "eslint '*.js' --fix --fix-type suggestion --ignore-pattern node_modules/",
-    "test": "node node_modules/jest/bin/jest --coverage"
+    "lint": "node node_modules/eslint/bin/eslint . --cache --ignore-pattern node_modules/",
+    "test": "node node_modules/jest/bin/jest --coverage",
+    "coveralls": "node node_modules/jest/bin/jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
@@ -40,6 +41,7 @@
     "@babel/preset-stage-3": "^7.0.0",
     "@babel/preset-typescript": "^7.6.0",
     "@babel/register": "^7.5.5",
+    "@serverless/eslint-config": "^1.2.0",
     "@types/jest": "^24.0.20",
     "@types/supertest": "^2.0.8",
     "@types/uuid": "^3.4.5",
@@ -47,6 +49,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
+    "coveralls": "^3.0.7",
     "cross-env": "^6.0.0",
     "dotenv-webpack": "^1.7.0",
     "eslint": "^6.2.2",
@@ -76,6 +79,11 @@
     },
     "transformIgnorePatterns": [
       "/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!data/keyMap.js",
+      "!/node_modules/"
     ]
   }
 }

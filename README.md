@@ -1,6 +1,8 @@
 # Serverless TODO List
 
- [![code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Build Status](https://travis-ci.org/igorjosesantos/serverless-todo-list-api.svg?branch=master)](https://travis-ci.org/igorjosesantos/serverless-todo-list-api)
+[![Coverage Status](https://coveralls.io/repos/github/igorjosesantos/serverless-todo-list-api/badge.svg?branch=master)](https://coveralls.io/github/igorjosesantos/serverless-todo-list-api?branch=master)
+[![code style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## SUMMARY
 

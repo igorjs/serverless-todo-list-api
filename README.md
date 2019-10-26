@@ -63,7 +63,7 @@ $ cd ./<project-root-folder>
 $ npm install
 ```
 
-#### How to run this service
+#### How to run this service (for development)
 
 ```bash
 $ npm start
@@ -73,6 +73,12 @@ $ npm start
 
 ```bash
 $ npm test
+```
+
+#### How to deploy in AWS
+
+```bash
+$ npm run deploy
 ```
 
 ## LICENSE

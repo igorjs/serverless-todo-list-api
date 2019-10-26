@@ -17,7 +17,7 @@
 For development, you will only need Node.js installed on your environement.
 And please use the appropriate [Editorconfig](http://editorconfig.org/) plugin for your Editor (not mandatory).
 
-* NodeJS (v10 or superior)
+* NodeJS (v12 or superior)
 * [Git](https://git-scm.com/)
 
 #### NodeJS installation on Windows or OS X
